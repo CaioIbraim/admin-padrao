@@ -1,0 +1,55 @@
+.red {
+  color: #dd5a43 !important;
+}
+.blue {
+  color: #478fca !important;
+}
+.green {
+  color: #69aa46 !important;
+}
+.orange {
+  color: #ff892a !important;
+}
+.purple {
+  color: #a069c3 !important;
+}
+.pink {
+  color: #c6699f !important;
+}
+.dark {
+  color: #333333 !important;
+}
+.white {
+  color: #ffffff !important;
+}
+.grey {
+  color: #777777 !important;
+}
+
+/* SPAN DO FORMULARIO */
+.required {
+  color: #dd5a43 !important;	
+}
+/* SPAN DO FORMULARIO */
+
+
+/* COR DA BORDA DO MENU */
+.nav.side-menu > li.active, .nav.side-menu > li.current-page {
+    border-right: 5px solid #ccac00;
+}
+
+.nav-sm .nav.child_menu li.active, .nav-sm .nav.side-menu li.active-sm {
+    border-right: 5px solid #ccac00;
+}
+/* COR DA BORDA DO MENU */
+
+
+/* TAMANHO DO LABEL */
+
+.dropdown-header strong {
+	float: left;
+    position: relative;
+    width: 40px;
+}
+
+/* TAMANHO DO LABEL */

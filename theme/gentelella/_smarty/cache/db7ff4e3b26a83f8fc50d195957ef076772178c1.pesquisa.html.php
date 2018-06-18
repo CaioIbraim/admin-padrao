@@ -1,0 +1,87 @@
+<?php
+/* Smarty version 3.1.30, created on 2017-08-08 16:12:43
+  from "D:\www\sigsaude\views\guia\pesquisa.html" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_598a0d2b69d505_01684053',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'ecd33274797ecb50a216148f0b077036918b183a' => 
+    array (
+      0 => 'D:\\www\\sigsaude\\views\\guia\\pesquisa.html',
+      1 => 1497980798,
+      2 => 'file',
+    ),
+  ),
+  'cache_lifetime' => 3600,
+),true)) {
+function content_598a0d2b69d505_01684053 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+<!-- script e css da tela -->
+<script src="http://10.4.224.74/sigsaude/views/_jquery/jquery.validate/jquery.validate.min.js"></script>
+<script src="http://10.4.224.74/sigsaude/views/_jquery/jquery.validate/localization/messages_pt_BR.js"></script>
+
+<link href="http://10.4.224.74/sigsaude/views/_jquery/jquery.dataTables/datatables.min.css" rel="stylesheet">
+<script src="http://10.4.224.74/sigsaude/views/_jquery/jquery.dataTables/datatables.min.js"></script>
+
+<!-- script e css da tela -->
+
+<div id="msgAjax"></div>
+<div class="page-header sigsaude"><h2>Imprimir Guia</h2></div>
+
+<form class="form-horizontal" method="post" id="frmFormulario" action="" onsubmit="$('#btnConfirmar').click(); return false;">
+	
+	<div class="form-group">
+    	<label for="numero_guia" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">Número da Guia</label>
+    	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    		<input type="text" id="numero_guia" name="numero_guia" value="" placeholder="Informe o número da GAU" class="form-control" required>
+    	</div>
+    	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+    		<button type="button" id="btnConfirmar" class="btn btn-primary"><span class="fa fa-print"></span> Imprimir</button>
+    	</div>
+  	</div>
+  	
+</form>
+<form method="post" id="frmFormularioAux" action=""><input type="hidden" name="numero_guia" id="numero_guia2" value=""></form>
+
+<!-- Scripts of page -->
+
+
+<script>
+$(document).ready(function(){
+	
+	$('#btnConfirmar').click(function(){
+
+		if ($('#numero_guia').val() == "") {
+			return false;
+		}
+		
+		$.ajax({
+            url: "http://10.4.224.74/sigsaude/guia-imprimir/pesquisa",
+            data: $("#frmFormulario").serialize(),
+            type: 'POST',
+            context: $('#msgAjax'),
+            beforeSend: function(){
+            	$("#msgAjax").html(imagemAjax);
+            	$("#btnConfirmar").attr("disabled","disabled");
+            	rolarScroll();
+            },
+            success: function(data){
+                //this.append(data);
+                $("#msgAjax").html(data);	            	
+                $("#btnConfirmar").removeAttr("disabled");
+                
+            }
+		});
+		
+	});
+    
+});
+</script> 
+
+
+<?php }
+}

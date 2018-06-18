@@ -1,0 +1,6 @@
+<menu>
+    <link url="null" icon="icone" nome="Tabelas">
+        <sublink url="contratos" icon="icone" nome="Tabela de Contratos"></sublink>
+        <sublink url="oses" icon="icone" nome="Tabela de OSE's"></sublink>
+    </link>
+</menu>

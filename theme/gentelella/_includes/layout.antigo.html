@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Formulários - Saúde Naval" />
+	    
+		<title>{if $tituloHTMLPagina != ""}{$tituloHTMLPagina} - {/if}{$APP_NOME}</title>
+
+		<link href="{$SITE_URL}views/_images/favicon.png" rel="shortcut icon" />
+	
+	    <!-- Bootstrap -->
+	    <link href="{$SITE_URL}views/_bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="{$SITE_URL}views/_font-awesome/css/font-awesome.min.css" type="text/css" />
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    	<link href="{$SITE_URL}views/_bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+			
+		<!-- Custom styles for this template -->
+		<link href="{$SITE_URL}views/_css/app.css" rel="stylesheet">
+		<link href="{$SITE_URL}views/_css/docs.css" rel="stylesheet">
+		<link href="{$SITE_URL}views/_css/extras.css" rel="stylesheet">
+		
+		<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    	<!--[if lt IE 9]><script src="{$SITE_URL}views/_bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    	<script src="{$SITE_URL}views/_bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+	
+	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	      <script src="{$SITE_URL}views/_js/html5shiv.min.js"></script>
+	      <script src="{$SITE_URL}views/_js/respond.min.js"></script>
+	    <![endif]-->
+	    
+	    <style type="text/css">
+	    body {
+			overflow-y: scroll;
+		}
+	    table th, table td {
+		    text-align: left;
+		}
+		
+		.obrigatorio input[type="password"] {
+		    border-left: 3px solid #b94a48;
+		}
+		
+		input[type="password"] {
+		    background: #f1f1f1 none repeat scroll 0 0 !important;
+		    border: 1px solid #ccc;
+		    color: #727979;
+		}
+		input[type="password"] {
+		    border-radius: 0 !important;
+		    box-shadow: none !important;
+		    font-size: 13px !important;
+		    height: auto;
+		    padding: 8px 10px;
+		    width: 100%;
+		}
+		input[type="password"]:focus{
+		  box-shadow: none !important;
+		  background: #fff !important;
+		  border-color: #66afe9;
+		}
+		
+		header #main-nav .navbar-brand {
+	 	   	margin-top: -15px;
+	    }
+		
+		.navbar-brand {    
+			height: 65px;
+	    }
+	    
+	    header #main-nav .navbar-nav > li > a:hover {
+			background-color: transparent !important;
+		    border-color: #337ab7 !important;
+		    border-bottom: 2px solid #4691d3 !important;;
+		
+		}
+		
+		.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {    
+			background-color: transparent !important;
+		    border-color: #337ab7 !important;
+		    border-bottom: 2px solid #4691d3 !important;;
+		}
+	    
+	    .contraste-ativo header #main-nav .navbar-nav > li > a:hover {
+			background-color: #000;
+		    border-color: #ede661;
+		    border-bottom: 2px solid #ede661;
+	    
+	    }
+		
+		.contraste-ativo .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {    
+			background-color: #000;
+		    border-color: #ede661;
+		    border-bottom: 2px solid #ede661;
+		}
+		
+		.contraste-ativo .dropdown-menu > li > a {  
+			background-color: #262626;
+			
+		}
+		
+		.contraste-ativo .dropdown-menu {
+		    background-color: #262626;
+	    }
+	    </style>
+	    
+  	</head>
+	<body>	
+		<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+    	<script src="{$SITE_URL}views/_jquery/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="{$SITE_URL}views/_bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    	<script src="{$SITE_URL}views/_bootstrap/js/bootstrap.min.js"></script>
+	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	    <script src="{$SITE_URL}views/_bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+		<!-- ================================================== -->
+			
+	    <!-- Scripts para utilização no site -->
+    	<script src="{$SITE_URL}views/_js/utilidades.js"></script>
+		<!-- ================================================== -->
+		
+		<header>
+    		<div class="container">
+	    		<div class="row">
+	    			<nav class="navbar" id="aux-nav">
+						<div class="col-md-2 linkPortal">{$APP_NOME|upper}</div>
+						<div class="col-md-2 col-md-offset-3 acessibilidade">
+							<a id="contraste" class="pull-right" alt="Ajuste Contraste"><i class="glyphicon glyphicon-adjust" aria-hidden="true"></i> Contraste</a>
+						</div>
+						<div class="col-md-5 pull-right perfilUsuario">
+							<ul class="list-inline">
+								<li>OM: {$arrDadosUsuarioLogado.sigla_om_usuario}</li>
+								<li>Perfil: {$arrDadosUsuarioLogado.perfil}</li>
+								<li>Login: <i><span title="{$arrDadosUsuarioLogado.nome}">{$arrDadosUsuarioLogado.login}</span></i></li>
+								<li>versão: {$APP_VERSAO}</li>
+							</ul>
+						</div>
+					</nav>
+	    		</div>
+
+	    		<div class="row">
+	    			<nav class="navbar" id="main-nav">
+		            	<div class="navbar-header">
+		                	<a href="{$SITE_URL}" class="navbar-brand" alt="{$APP_NOME|upper} - SIGSAUDE. Clique para retornar para página inicial." title="{$APP_NOME|upper} - SIGSAUDE. Clique para retornar para página inicial."><img class="img-responsive" alt='ajax' src='{$SITE_URL}views/_images/logotipo.png'></a>
+		                </div>
+	                	
+	                	<ul class="nav navbar-nav navbar-right">
+						        {if $arrDadosUsuarioLogado.logado}
+						        <li class="dropdown">
+							          <a href="#" class="{if $idTela == 2}checked {/if}dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gerênciar <span class="caret"></span></a>
+							          <ul class="dropdown-menu">
+							            {if $arrDadosUsuarioLogado.id_perfil == 'T'}<li><a href="{$SITE_URL}usuarios">Usuários</a></li>{/if}
+							            {* <li><a href="{$SITE_URL}usuariossmjustica">Usuário SSM de Justiça</a></li>
+							            <li role="separator" class="divider"></li> *}
+							            <li><a href="{$SITE_URL}ose">OSE</a></li>
+							            <li><a href="{$SITE_URL}contrato">Contratos</a></li>
+									  </ul>
+							   	</li>
+							   	<li class="dropdown">
+							          <a href="#" class="{if $idTela == 2}checked {/if}dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guia <span class="caret"></span></a>
+							          <ul class="dropdown-menu">
+							          	{*<li><a href="{$SITE_URL}guia-imprimir">Imprimir</a></li>*}
+							            <li><a href="{$SITE_URL}guia-pesquisa">Pesquisar</a></li>
+							            <li role="separator" class="divider"></li>
+							            <li class="dropdown-header">Gerar Guias</li>
+							            <li><a href="{$SITE_URL}guia-consulta">&nbsp;&nbsp;&nbsp;Consultas</a></li>
+							            <li><a href="{$SITE_URL}guia-internacao">&nbsp;&nbsp;&nbsp;Internação </a></li>
+							            <li><a href="{$SITE_URL}guia-solicitacao">&nbsp;&nbsp;&nbsp;Solicitação de SP/SADT</a></li>
+							            <li><a href="{$SITE_URL}guia-odontologica">&nbsp;&nbsp;&nbsp;Tratamento Odontológico</a></li>
+							            
+							            
+									  </ul>
+							   	</li>
+							   	{/if}
+		                		<li><a href="{$SITE_URL}alterarsenha"> Alterar Senha</a></li>
+		                		<li><a href="{$SITE_URL}login/sair"><i class="fa fa-sign-out"></i> Sair</a></li>
+	                     </ul>
+	               </nav>
+	    		</div>
+    		</div>
+    	</header>
+		
+		<div class="container wrapper-content" id="divPrincipal">{$htmlPaginaSolicitada}</div>
+		<div id="divAjax" style="display: none;"></div>
+		{literal}
+		<script>
+		var imagemAjax = "<center><img alt='ajax' src='{/literal}{$SITE_URL}views/_{literal}images/ajax.gif'></center>";
+				
+		rolarScroll = function()
+		{
+			$('html, body').animate({scrollTop:0}, 'slow');
+		}
+		
+		carregarTelaAjax = function(strUrl,arrDados)
+		{
+			$.ajax({
+				  method: "POST",
+				  url: '{/literal}{$SITE_URL}{literal}'+strUrl,
+				  data: arrDados,
+				  dataType: "html",
+				  
+				  beforeSend: function(){
+		          		$("#divPrincipal").html(imagemAjax);
+		            	rolarScroll();
+		           },
+		           success: function(data){
+		                //this.append(data);
+		                $("#divPrincipal").html(data);	            
+		           }
+				  
+			});
+		}
+		
+		limparFormulario = function(idFormulario)
+		{
+			$('#'+idFormulario).each (function(){
+			  this.reset();
+			});
+		}
+		
+		$('#contraste').click(function(){   
+			$('body').toggleClass('contraste-ativo');
+		});
+		</script>
+		{/literal}
+		
+		<!-- Footer -->
+    	<footer>
+	        <div class="container">
+		        <div class="row">
+			        <div class="col-md-2">
+			        	<img src="{$SITE_URL}views/_images/icoMarinha.png" />
+			        </div>
+
+			        <div class="col-md-4 col-md-offset-6">{$APP_CREDITOS}</div>
+		        </div>
+	        </div>
+      	</footer>
+		
+	</body>
+</html>

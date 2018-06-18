@@ -1,0 +1,15 @@
+<div class="page-title">
+	{if $SIS_BREADCRUMB_ARRAY|count > 0}
+   	<div class="title_left">
+      		
+		<ol class="breadcrumb">
+		  <li><a href="{$SITE_URL}"><i class="fa fa-home"></i> Principal</a></li>
+		  {section name="x" loop=$SIS_BREADCRUMB_ARRAY}
+		  <li class="active">{$SIS_BREADCRUMB_ARRAY[x].texto}</li>
+		  {/section}
+		</ol>
+      		
+    	</div>
+    	{/if}
+	</div>
+<div class="clearfix"></div>

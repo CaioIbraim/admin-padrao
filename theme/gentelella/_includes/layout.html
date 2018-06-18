@@ -1,0 +1,382 @@
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{if $tituloHTMLPagina != ""}{$tituloHTMLPagina} - {/if}{$APP_NOME}</title>
+
+    <!-- Bootstrap -->
+    <link href="{$SITE_URL}views/_gentelella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- SideBar -->
+    <link href="{$SITE_URL}views//_jquery/bootsidemenu/BootSideMenu.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{$SITE_URL}views/_gentelella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{$SITE_URL}views/_css/font-awesome-animation.min.css" rel="stylesheet">
+    
+    <link href="{$SITE_URL}views/_css/bootstrap-multiselect.css" rel="stylesheet">
+	<link href="{$SITE_URL}views/_css/bootstrap-select/bootstrap-select.css" rel="stylesheet">
+    
+    
+    
+    <!-- NProgress -->
+    <link href="{$SITE_URL}views/_gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{$SITE_URL}views/_gentelella/build/css/custom.min.css" rel="stylesheet">
+    <link href="{$SITE_URL}views/_css/extras.css" rel="stylesheet">
+  
+  
+<style>
+.input-group-btn {
+    padding : 19px 12px ! imporatant;
+}
+    
+.table, thead, tr, td, th{
+    font-size: 10px ! important;
+    border: solid #666  thin ! important;
+    text-align: center;
+}
+
+.over{
+    overflow: auto ! important;    
+    scrollbar-base-color:#fff ! important;
+}
+
+</style>
+  
+  
+  </head>
+
+  <body class="nav-md " id="myBody">
+    <!-- jQuery -->
+    <script src="{$SITE_URL}views/_gentelella/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{$SITE_URL}views/_gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- SideBar -->
+    <script src="{$SITE_URL}views/_jquery/bootsidemenu/BootSideMenu.js"></script>
+    <script src="{$SITE_URL}views/_jquery/jquery.fullscreen.js"></script>
+    
+    
+    <!-- Scripts para utilização no site -->
+    <script src="{$SITE_URL}views/_js/utilidades.js"></script>
+	<!-- ================================================== -->
+    
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              {*<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>*}
+              <a href="{$SITE_URL}" class="site_title"><label id="mini-logo" style="display: none;"><img src="{$SITE_URL}views/_images/favicon.png" alt="SIGSAUDE" width="45" height="45"></label><span><img src="{$SITE_URL}views/_images/logotipo.png" alt="SIGSAUDE" width="200" height="45"></span></a>              
+            </div>
+
+            <div class="clearfix"></div>
+
+            {*
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="{$SITE_URL}views/_images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>John Doe</h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /menu profile quick info -->
+            *}
+            <br />
+			
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>{$APP_NOME} - {$APP_VERSAO}</h3>
+                <ul class="nav side-menu">
+                  
+                  {section name="x" loop=$SIS_MENU_ARRAY}
+                    <li><a><i class="{$SIS_MENU_ARRAY[x].icone}"></i> {$SIS_MENU_ARRAY[x].titulo} {if $SIS_MENU_ARRAY[x].filhos > 0}<span class="fa fa-chevron-down"></span>{/if}</a>
+                      {if $SIS_MENU_ARRAY[x].filhos > 0}
+                      <ul class="nav child_menu">
+                        {section name="y" loop=$SIS_MENU_ARRAY[x].arrFilhos}
+                        <li><a id="idURL_{$SIS_MENU_ARRAY[x].arrFilhos[y].id}" onclick="abrirTelaMenu(this.id,'{$SIS_MENU_ARRAY[x].arrFilhos[y].url}');">{$SIS_MENU_ARRAY[x].arrFilhos[y].titulo}</a>
+
+                        </li>
+                        {/section}
+                      </ul>
+                      {/if}
+                    </li>
+                  {/section} 
+                  
+                </ul>
+              </div>
+
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Principal" href="{$SITE_URL}">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Subir" id="btnSubir">
+                <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Tela Cheia" id="btnFullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Sair" href="{$SITE_URL}login/sair">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+              
+                {*
+                <li role="presentation" class="dropdown">
+                  <a href="#" id="sidebar-slide">
+                    <i class="fa fa-cog"></i>
+                  </a>
+                </li> 
+                *}
+                
+                              
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    {* {$arrDadosUsuarioLogado.login} [Perfil: {$arrDadosUsuarioLogado.perfil}] *}
+                    <i class="fa fa-user"></i>
+                    <i class=" fa fa-angle-down"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  	<li class="dropdown-header" style="margin-top: 10px;"><strong>Login:</strong> {$arrDadosUsuarioLogado.login}</li>
+                  	<li class="dropdown-header"><strong>Perfil:</strong> {$arrDadosUsuarioLogado.perfil}</li>
+                  	<li class="dropdown-header"><strong>OM:</strong> {$arrDadosUsuarioLogado.sigla_om_usuario}</li>
+                  	<li role="separator" class="divider"></li>
+                    <li><a href="{$SITE_URL}login/sair"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
+                  </ul>
+                </li>
+              
+              {if $SIS_NOTIFICACAO_ARRAY|count}
+
+              <!--
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-bell-o faa-ring animated faa-slow"></i>
+                    <span class="badge bg-red">{$SIS_NOTIFICACAO_ARRAY|count}</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    {section name="x" loop=$SIS_NOTIFICACAO_ARRAY}
+                    <li>
+                      <a>
+                        <span>
+                          <span>{$SIS_NOTIFICACAO_ARRAY[x].usuario}</span>
+                          <span class="time">{$SIS_NOTIFICACAO_ARRAY[x].tempo}</span>
+                        </span>
+                        <span class="message">
+                          {$SIS_NOTIFICACAO_ARRAY[x].texto}
+                        </span>
+                      </a>
+                    </li>
+                    {/section}
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>Ver todos</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+
+                -->
+                {/if}
+              
+				
+                
+                
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" id="divPrincipal">
+                  
+	        <div class="" id="divAjaxPrincipal">
+				{* ************************************************************ *}
+				{* ************************************************************ *}
+				
+				{* ************************************************************ *}
+				{$htmlPaginaSolicitada}
+				{* ************************************************************ *}
+			</div>
+		    
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            {$APP_NOME|upper} {$APP_VERSAO} - {$APP_CREDITOS}
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    	 <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal"></button>
+	          
+	        </div>
+	        <div class="modal-body" >
+	          <h2 id="txt-modal"></h2>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal"> &times;</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+	{* ************************************************************************************ *}
+	<script src="{$SITE_URL}views/_js/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="{$SITE_URL}views/_js/bootstrap-multiselect.js"></script>
+	{* ************************************************************************************ *}
+
+    <!-- FastClick -->
+    <script src="{$SITE_URL}views/_gentelella/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="{$SITE_URL}views/_gentelella/vendors/nprogress/nprogress.js"></script>  
+    
+    
+    <!-- Chart.js -->
+    <script src="{$SITE_URL}views/_gentelella/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{$SITE_URL}views/_gentelella/build/js/custom.js"></script>
+	
+	<!-- Custom Theme Scripts -->
+    <script src="{$SITE_URL}views/_js/jquery.base64.js"></script>
+	<script src="{$SITE_URL}views/_js/jquery.btechco.excelexport.js"></script>
+	
+	
+    <script>
+    {literal}
+    $(document).ready(function() {
+    	
+    	imagemAjax = '<center><i class="fa fa-refresh fa-spin fa-2x fa-fw"></i><span class="sr-only">Loading...</span></center>';
+    	
+		limparFormulario = function(idFormulario)
+		{
+			$('#'+idFormulario).each (function(){
+			  this.reset();
+			});
+		}
+		
+		abrirTelaMenu = function(objID,url) {
+			carregarTelaAjax(url,'');
+		}
+    	
+    	carregarTelaAjax = function(strUrl,arrDados,divHtml)
+    	{
+    		if(divHtml === undefined) {
+    			divHtml = 'divAjaxPrincipal';
+    	    }
+    		
+    		$.ajax({
+    			  method: "POST",
+    			  url: '{/literal}{$SITE_URL}{literal}'+strUrl,
+    			  data: arrDados,
+    			  dataType: "html",
+    			  
+    		  beforeSend: function(){
+    	      		$("#"+divHtml).html(imagemAjax);
+    	           },
+    	           success: function(data){
+    	                //this.append(data);
+    	                $("#"+divHtml).html(data);	            
+    	           }
+    		});
+    	}
+    	
+    	
+    	abrirModal = function(msg)
+    	{	
+    		$("#myModal").modal();
+    		$("#txt-modal").html(msg);	
+    	}
+    	
+    	
+    });
+    </script>
+    {/literal}
+    
+    
+    
+{literal}
+<script>
+  $(document).ready(function () {
+  	$("body").delegate(".export", "click", function() {
+            
+            function makeid() {
+                 //Função para gerar ID
+                 var text = "";
+                 var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                 for (var i = 0; i < 5; i++){
+                       text += possible.charAt(Math.floor(Math.random() * possible.length));
+                 }
+                 return text;
+            }
+            
+            //Exporta a tabela para excel
+            $( ".x_content table" ).each(function( index ) {
+                $( this ).attr('id', makeid());
+               });
+            var f = $(this).closest(".x_panel").find('table').attr('id');
+            
+            $(f).btechco_excelexport({
+                containerid: f
+               , datatype: $datatype.Table
+               , filename: 'tabela'
+            });
+        });
+        
+        var tamanhoFont = 12;
+        
+        $("body").delegate(".text-plus", "click", function() {
+            //Aciona botão fonte maior
+            tamanhoFont = tamanhoFont + 1;
+            //Altera propriedades da fonte da div conteudo
+            alert(tamanhoFont);
+            $(this).closest(".x_panel").find('table').css("font-size", "10px");
+	});
+        
+        
+  });
+</script>
+{/literal}
+  </body>
+</html>

@@ -1,0 +1,8 @@
+
+<menu>
+   
+    <link url="null" icon="icone" nome="Guias">
+        <sublink url="guias_internacao" icon="icone" nome="Guias de Internação"></sublink>
+    </link>
+    
+</menu>
